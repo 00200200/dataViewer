@@ -3,6 +3,7 @@ package pl.dataViewer.client;
 import pl.dataViewer.client.api.ImgwApiClient;
 import pl.dataViewer.client.data.DataParser;
 import pl.dataViewer.client.data.StationData;
+import pl.dataViewer.client.db.SaveStationData;
 
 
 import java.nio.charset.StandardCharsets;
@@ -22,5 +23,6 @@ public class Main {
             return null;
         });
         data.join();
+        SaveStationData saveStationData = new SaveStationData();
     }
 }

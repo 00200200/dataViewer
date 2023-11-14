@@ -10,7 +10,7 @@ public class SaveStationData {
         try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dataViewer","root","haslohaslo")){
 
             String sqlInsert = "INSERT INTO synop_data (id_stacji, nazwa_stacji, data_pomiaru, godzina_pomiaru, temperatura, predkosc_wiatru, kierunek_wiatru, wilgotnosc_wzgledna, suma_opadu, cisnienie) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            String sqlCheckIfInDataBase = "SELECT id_stacji data_promiaru from synop_data where id_stacji";
+            String sqlCheckIfInDataBase = "SELECT id_stacji data_promiaru from synop_data where id_stacji=item.getStationId()";
             for(StationData item : data){
                 try(PreparedStatement preparedStatement = connection.prepareStatement(sqlInsert)){
                     preparedStatement.setInt(1,item.getStationId());
@@ -23,6 +23,8 @@ public class SaveStationData {
                     preparedStatement.setDouble(8,item.getHumidity());
                     preparedStatement.setDouble(9,item.getRainFall());
                     preparedStatement.setDouble(10,item.getPressure());
+                    preparedStatement.executeUpdate();
+                    System.out.println("DODANO DANE");
                 }
             }
         } catch (SQLException e) {
