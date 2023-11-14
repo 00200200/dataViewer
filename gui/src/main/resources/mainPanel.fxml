@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="25.0" layoutY="33.0" prefHeight="200.0" prefWidth="134.0">
+        <columns>
+          <TableColumn prefWidth="87.0" text="STACJA" />
+        </columns>
+      </TableView>
+      <Button layoutX="236.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Otwórz" />
+      <VBox layoutX="241.0" layoutY="54.0" prefHeight="179.0" prefWidth="179.0">
+         <children>
+            <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="128.0" text="ID_STACJI" />
+            <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="180.0" text="STACJA" />
+            <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="173.0" text="DATA POMIARU" />
+            <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="GODZINA POMIARU" />
+            <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="TEMPERATURA" />
+            <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="PREDKOSC WIATRU" />
+            <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="KIERUNEK WIATRU" />
+            <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="WILGOTNOSC" />
+            <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="SUMA OPADU" />
+            <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="CISNIENIE" />
+         </children>
+      </VBox>
+      <Label layoutX="241.0" layoutY="33.0" text="Wybierz dane które chcesz wyświetlić" />
+   </children>
+</AnchorPane>
