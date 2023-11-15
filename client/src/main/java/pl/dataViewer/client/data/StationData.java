@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class StationData {
 
-    public int getStationId() {
+    public Integer getStationId() {
         return stationId;
     }
 
@@ -29,7 +29,7 @@ public class StationData {
         this.date = date;
     }
 
-    public int getHour() {
+    public Integer getHour() {
         return hour;
     }
 
@@ -37,7 +37,7 @@ public class StationData {
         this.hour = hour;
     }
 
-    public double getTemperature() {
+    public Double getTemperature() {
         return temperature;
     }
 
@@ -45,7 +45,7 @@ public class StationData {
         this.temperature = temperature;
     }
 
-    public double getWindSpeed() {
+    public Double getWindSpeed() {
         return windSpeed;
     }
 
@@ -53,7 +53,7 @@ public class StationData {
         this.windSpeed = windSpeed;
     }
 
-    public double getWindDirection() {
+    public Double getWindDirection() {
         return windDirection;
     }
 
@@ -61,7 +61,7 @@ public class StationData {
         this.windDirection = windDirection;
     }
 
-    public double getHumidity() {
+    public Double getHumidity() {
         return humidity;
     }
 
@@ -69,7 +69,7 @@ public class StationData {
         this.humidity = humidity;
     }
 
-    public double getRainFall() {
+    public Double getRainFall() {
         return rainFall;
     }
 
@@ -77,7 +77,7 @@ public class StationData {
         this.rainFall = rainFall;
     }
 
-    public double getPressure() {
+    public Double getPressure() {
         return pressure;
     }
 
@@ -86,27 +86,27 @@ public class StationData {
     }
 
     @SerializedName("id_stacji")
-    private int stationId;
+    private Integer stationId;
     @SerializedName("stacja")
     private String station;
     @SerializedName("data_pomiaru")
     private LocalDate date;
     @SerializedName("godzina_pomiaru")
-    private int hour;
+    private Integer hour;
     @SerializedName("temperatura")
-    private double temperature;
+    private Double temperature;
     @SerializedName("predkosc_wiatru")
-    private double windSpeed;
+    private Double windSpeed;
     @SerializedName("kierunek_wiatru")
-    private double windDirection;
+    private Double windDirection;
     @SerializedName("wilgotnosc_wzgledna")
-    private double humidity;
+    private Double humidity;
     @SerializedName("suma_opadu")
-    private double rainFall;
+    private Double rainFall;
     @SerializedName("cisnienie")
-    private double pressure;
+    private Double pressure;
 
-    public StationData(int stationId, String station, LocalDate date, int hour, double temperature, double windSpeed, double windDirection, double humidity, double rainFall, double pressure) {
+    public StationData(Integer stationId, String station, LocalDate date, Integer hour, Double temperature, Double windSpeed, Double windDirection, Double humidity, Double rainFall, Double pressure) {
         this.stationId = stationId;
         this.station = station;
         this.date = date;

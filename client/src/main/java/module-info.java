@@ -6,4 +6,7 @@ module client {
     requires java.sql;
     opens pl.dataViewer.client.db to mysql.connector.java;
     opens pl.dataViewer.client to com.google.gson;
+    exports pl.dataViewer.client.data;
+    exports pl.dataViewer.client.api;
+    exports pl.dataViewer.client.db;
 }

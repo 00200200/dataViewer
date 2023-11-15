@@ -58,7 +58,7 @@
                     <jlinkImageName>guifx</jlinkImageName>
                     <launcher>launcher</launcher>
                     <jlinkZipName>guifxzip</jlinkZipName>
-                    <mainClass>gui/pl.dataViewer.gui.HelloApplication</mainClass>
+                    <mainClass>gui/pl.dataViewer.gui.Main</mainClass>
                 </configuration>
 
                 <executions>
@@ -66,7 +66,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>gui/pl.dataViewer.gui.HelloApplication</mainClass>
+                            <mainClass>gui/pl.dataViewer.gui.Main</mainClass>
                         </configuration>
                     </execution>
                 </executions>
