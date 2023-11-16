@@ -17,6 +17,12 @@ public class DataPanelController {
             TableColumn<StationData, String>  stationTableColumnId = new TableColumn<>("id_stacji");
             TableColumn<StationData, String>  stationTableColumnName = new TableColumn<>("nazwa_stacji");
             TableColumn<StationData, String>  stationTableColumnDate = new TableColumn<>("data_pomiaru");
+            TableColumn<StationData, String>  stationTableColumnHour = new TableColumn<>("godzina_pomiaru");
+            TableColumn<StationData, String>  stationTableColumnTemperature = new TableColumn<>("temperatura");
+            TableColumn<StationData, String>  stationTableColumnWindSpeed = new TableColumn<>("predkosc_wiatru");
+            TableColumn<StationData, String>  stationTableColumnHumidity = new TableColumn<>("wilgotnosc_wzgledna");
+            TableColumn<StationData, String>  stationTableColumnRainFall = new TableColumn<>("suma_opadu");
+            TableColumn<StationData, String>  stationTableColumnpressure = new TableColumn<>("cisnienie");
             if(firstItem.getStationId() != null) {
                 dataPanelTable.getColumns().add(stationTableColumnId);
             }
@@ -25,6 +31,18 @@ public class DataPanelController {
             }
             if(firstItem.getDate() != null){
                 dataPanelTable.getColumns().add(stationTableColumnDate);
+            }if(firstItem.getHour() != null){
+                dataPanelTable.getColumns().add(stationTableColumnHour);
+            }if(firstItem.getTemperature() != null){
+                dataPanelTable.getColumns().add(stationTableColumnTemperature);
+            }if(firstItem.getWindSpeed() != null){
+                dataPanelTable.getColumns().add(stationTableColumnWindSpeed);
+            }if(firstItem.getHumidity() != null){
+                dataPanelTable.getColumns().add(stationTableColumnHumidity);
+            }if(firstItem.getRainFall() != null){
+                dataPanelTable.getColumns().add(stationTableColumnRainFall);
+            }if(firstItem.getPressure() != null){
+                dataPanelTable.getColumns().add(stationTableColumnpressure);
             }
             for(StationData item : data){
                 if(item.getStationId() != null){
@@ -35,6 +53,18 @@ public class DataPanelController {
                 }
                 if(item.getDate() != null){
                     stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+                } if(item.getHour() != null){
+                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("hour"));
+                } if(item.getTemperature() != null){
+                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("temperature"));
+                } if(item.getWindSpeed() != null){
+                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("windSpeed"));
+                } if(item.getHumidity() != null){
+                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("humidity"));
+                } if(item.getRainFall() != null){
+                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("rainFall"));
+                } if(item.getPressure() != null){
+                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("pressure"));
                 }
             }
 
