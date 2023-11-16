@@ -20,6 +20,7 @@ public class DataPanelController {
             TableColumn<StationData, String>  stationTableColumnHour = new TableColumn<>("godzina_pomiaru");
             TableColumn<StationData, String>  stationTableColumnTemperature = new TableColumn<>("temperatura");
             TableColumn<StationData, String>  stationTableColumnWindSpeed = new TableColumn<>("predkosc_wiatru");
+            TableColumn<StationData, String>  stationTableColumnWindDirection = new TableColumn<>("kierunek_wiatru");
             TableColumn<StationData, String>  stationTableColumnHumidity = new TableColumn<>("wilgotnosc_wzgledna");
             TableColumn<StationData, String>  stationTableColumnRainFall = new TableColumn<>("suma_opadu");
             TableColumn<StationData, String>  stationTableColumnpressure = new TableColumn<>("cisnienie");
@@ -43,6 +44,8 @@ public class DataPanelController {
                 dataPanelTable.getColumns().add(stationTableColumnRainFall);
             }if(firstItem.getPressure() != null){
                 dataPanelTable.getColumns().add(stationTableColumnpressure);
+            }if(firstItem.getWindDirection() != null){
+                dataPanelTable.getColumns().add(stationTableColumnWindDirection);
             }
             for(StationData item : data){
                 if(item.getStationId() != null){
@@ -54,17 +57,19 @@ public class DataPanelController {
                 if(item.getDate() != null){
                     stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
                 } if(item.getHour() != null){
-                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("hour"));
+                    stationTableColumnHour.setCellValueFactory(new PropertyValueFactory<>("hour"));
                 } if(item.getTemperature() != null){
-                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("temperature"));
+                    stationTableColumnTemperature.setCellValueFactory(new PropertyValueFactory<>("temperature"));
                 } if(item.getWindSpeed() != null){
-                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("windSpeed"));
+                    stationTableColumnWindSpeed.setCellValueFactory(new PropertyValueFactory<>("windSpeed"));
+                } if(item.getWindSpeed() != null){
+                    stationTableColumnWindDirection.setCellValueFactory(new PropertyValueFactory<>("windDirection"));
                 } if(item.getHumidity() != null){
-                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("humidity"));
+                    stationTableColumnHumidity.setCellValueFactory(new PropertyValueFactory<>("humidity"));
                 } if(item.getRainFall() != null){
-                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("rainFall"));
+                    stationTableColumnRainFall.setCellValueFactory(new PropertyValueFactory<>("rainFall"));
                 } if(item.getPressure() != null){
-                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("pressure"));
+                    stationTableColumnpressure.setCellValueFactory(new PropertyValueFactory<>("pressure"));
                 }
             }
 
