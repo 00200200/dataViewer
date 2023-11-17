@@ -1,5 +1,7 @@
 package pl.dataViewer.gui.controller;
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -9,6 +11,8 @@ import java.util.List;
 public class DataPanelController {
     @FXML
     TableView<StationData> dataPanelTable;
+    @FXML
+    LineChart<String,Number> temperatureGraph;
 
     public void displayData(List<StationData> data){
         if(!data.isEmpty()){
@@ -74,11 +78,22 @@ public class DataPanelController {
             }
 
             dataPanelTable.getItems().setAll(data);
-        }
 
+            updateGraph(data);
+        }
     }
 
-//    private boolean columnExists(String columNaem){
-//        return dataPanelTable.getColumns().stream().anyMatch(col -> col.getText().equals(columNaem));
-//    }
+    public void updateGraph(List<StationData> data){
+        temperatureGraph.getData().clear();
+        XYChart.Series<String,Number> series = new XYChart.Series<>();
+        series.setName("Temperature Graph");
+
+        for(StationData item : data){
+            if(item.getDate() != null && item.getPressure() != null) {
+                String dataString = item.getDate().toString();
+                series.getData().add(new XYChart.Data<>(dataString, item.getTemperature()));
+            }
+        }
+        temperatureGraph.getData().add(series);
+    }
 }

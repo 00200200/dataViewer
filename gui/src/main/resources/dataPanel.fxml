@@ -15,7 +15,7 @@
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <LineChart layoutX="21.0" layoutY="248.0" prefHeight="441.0" prefWidth="500.0">
+      <LineChart fx:id="temperatureGraph" layoutX="21.0" layoutY="248.0" prefHeight="441.0" prefWidth="500.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
