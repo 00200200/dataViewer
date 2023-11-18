@@ -9,7 +9,7 @@ public class StationData {
         return stationId;
     }
 
-    public void setStationId(int stationId) {
+    public void setStationId(Integer stationId) {
         this.stationId = stationId;
     }
 
@@ -33,7 +33,7 @@ public class StationData {
         return hour;
     }
 
-    public void setHour(int hour) {
+    public void setHour(Integer hour) {
         this.hour = hour;
     }
 
@@ -41,7 +41,7 @@ public class StationData {
         return temperature;
     }
 
-    public void setTemperature(double temperature) {
+    public void setTemperature(Double temperature) {
         this.temperature = temperature;
     }
 
@@ -49,7 +49,7 @@ public class StationData {
         return windSpeed;
     }
 
-    public void setWindSpeed(double windSpeed) {
+    public void setWindSpeed(Double windSpeed) {
         this.windSpeed = windSpeed;
     }
 
@@ -57,7 +57,7 @@ public class StationData {
         return windDirection;
     }
 
-    public void setWindDirection(double windDirection) {
+    public void setWindDirection(Double windDirection) {
         this.windDirection = windDirection;
     }
 
@@ -65,7 +65,7 @@ public class StationData {
         return humidity;
     }
 
-    public void setHumidity(double humidity) {
+    public void setHumidity(Double humidity) {
         this.humidity = humidity;
     }
 
@@ -73,7 +73,7 @@ public class StationData {
         return rainFall;
     }
 
-    public void setRainFall(double rainFall) {
+    public void setRainFall(Double rainFall) {
         this.rainFall = rainFall;
     }
 
@@ -81,7 +81,7 @@ public class StationData {
         return pressure;
     }
 
-    public void setPressure(double pressure) {
+    public void setPressure(Double pressure) {
         this.pressure = pressure;
     }
 

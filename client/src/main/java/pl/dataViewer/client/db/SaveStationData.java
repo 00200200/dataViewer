@@ -20,16 +20,57 @@ public class SaveStationData {
                     ResultSet resp = check.executeQuery();
                     if (!resp.next()) {
                         try (PreparedStatement preparedStatement = connection.prepareStatement(sqlInsert)) {
-                            preparedStatement.setInt(1, item.getStationId());
-                            preparedStatement.setString(2, item.getStation());
-                            preparedStatement.setDate(3, java.sql.Date.valueOf(item.getDate()));
-                            preparedStatement.setInt(4, item.getHour());
-                            preparedStatement.setDouble(5, item.getTemperature());
-                            preparedStatement.setDouble(6, item.getWindSpeed());
-                            preparedStatement.setDouble(7, item.getWindDirection());
-                            preparedStatement.setDouble(8, item.getHumidity());
-                            preparedStatement.setDouble(9, item.getRainFall());
-                            preparedStatement.setDouble(10, item.getPressure());
+                            if(item.getStationId() != null){
+                                preparedStatement.setInt(1, item.getStationId());
+                            }else{
+                                preparedStatement.setNull(1,Types.INTEGER);
+                            }
+                            if(item.getStation() != null) {
+                                preparedStatement.setString(2, item.getStation());
+                            }else{
+                                preparedStatement.setNull(2,Types.VARCHAR);
+                            }
+                            if(item.getDate() != null){
+                                preparedStatement.setDate(3, java.sql.Date.valueOf(item.getDate()));
+                            }else{
+                                preparedStatement.setNull(3,Types.DATE);
+                            }
+                            if(item.getHour() != null){
+                                preparedStatement.setInt(4, item.getHour());
+                            }else{
+                                preparedStatement.setNull(4,Types.INTEGER);
+                            }
+                            if(item.getTemperature() != null){
+                                preparedStatement.setDouble(5, item.getTemperature());
+                            }else{
+                                preparedStatement.setNull(5,Types.DOUBLE);
+                            }
+                            if(item.getWindSpeed() != null){
+                                preparedStatement.setDouble(6, item.getWindSpeed());
+                            }
+                            else{
+                                preparedStatement.setNull(6,Types.DOUBLE);
+                            }
+                            if(item.getWindDirection() != null){
+                                preparedStatement.setDouble(7, item.getWindDirection());
+                            }else{
+                                preparedStatement.setNull(7,Types.DOUBLE);
+                            }
+                            if(item.getHumidity() != null){
+                                preparedStatement.setDouble(8, item.getHumidity());
+                            }else{
+                                preparedStatement.setNull(8,Types.DOUBLE);
+                            }
+                            if(item.getRainFall() != null){
+                                preparedStatement.setDouble(9, item.getRainFall());
+                            }else{
+                                preparedStatement.setNull(9,Types.DOUBLE);
+                            }
+                            if(item.getPressure() != null){
+                                preparedStatement.setDouble(10, item.getPressure());
+                            }else{
+                                preparedStatement.setNull(10,Types.DOUBLE);
+                            }
                             preparedStatement.executeUpdate();
                         }
                     }

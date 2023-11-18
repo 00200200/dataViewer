@@ -111,16 +111,66 @@ public class StationRepository {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
                 StationData data = new StationData();
-                if(stationId) data.setStationId(resultSet.getInt("id_stacji"));
-                if(station) data.setStation(resultSet.getString("nazwa_stacji"));
-                if(date) data.setDate(resultSet.getDate("data_pomiaru").toLocalDate());
-                if(hour) data.setHour(resultSet.getInt("godzina_pomiaru"));
-                if(temperature) data.setTemperature(resultSet.getDouble("temperatura"));
-                if(windSpeed) data.setWindSpeed(resultSet.getDouble("predkosc_wiatru"));
-                if(windDirection) data.setWindDirection(resultSet.getDouble("kierunek_wiatru"));
-                if(humidity) data.setHumidity(resultSet.getDouble("wilgotnosc_wzgledna"));
-                if(rainFall) data.setRainFall(resultSet.getDouble("suma_opadu"));
-                if(pressure) data.setPressure(resultSet.getDouble("cisnienie"));
+                if(stationId){
+                    data.setStationId(resultSet.getInt("id_stacji"));
+                    if(resultSet.wasNull()){
+                        data.setStationId(null);
+                    }
+                }
+                if(station){
+                    data.setStation(resultSet.getString("nazwa_stacji"));
+                    if(resultSet.wasNull()){
+                        data.setStation(null);
+                    }
+                }
+                if(date){
+                    data.setDate(resultSet.getDate("data_pomiaru").toLocalDate());
+                    if(resultSet.wasNull()){
+                        data.setDate(null);
+                    }
+                }
+                if(hour){
+                    data.setHour(resultSet.getInt("godzina_pomiaru"));
+                    if(resultSet.wasNull()){
+                        data.setHour(null);
+                    }
+                }
+                if(temperature){
+                    data.setTemperature(resultSet.getDouble("temperatura"));
+                    if(resultSet.wasNull()){
+                        data.setTemperature(null);
+                    }
+                }
+                if(windSpeed){
+                    data.setWindSpeed(resultSet.getDouble("predkosc_wiatru"));
+                    if(resultSet.wasNull()){
+                        data.setWindSpeed(null);
+                    }
+                }
+                if(windDirection){
+                    data.setWindDirection(resultSet.getDouble("kierunek_wiatru"));
+                    if(resultSet.wasNull()){
+                        data.setWindDirection(null);
+                    }
+                }
+                if(humidity){
+                    data.setHumidity(resultSet.getDouble("wilgotnosc_wzgledna"));
+                    if(resultSet.wasNull()){
+                        data.setHumidity(null);
+                    }
+                }
+                if(rainFall){
+                    data.setRainFall(resultSet.getDouble("suma_opadu"));
+                    if(resultSet.wasNull()){
+                        data.setRainFall(null);
+                    }
+                }
+                if(pressure) {
+                    data.setPressure(resultSet.getDouble("cisnienie"));
+                    if(resultSet.wasNull()){
+                        data.setPressure(null);
+                    }
+                }
                 checkedData.add(data);
             }
         } catch (SQLException e) {
