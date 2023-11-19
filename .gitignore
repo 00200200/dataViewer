@@ -11,7 +11,7 @@ target/
 *.iws
 *.iml
 *.ipr
-
+client/src/main/resources/application.properties
 ### Eclipse ###
 .apt_generated
 .classpath

@@ -1,15 +1,29 @@
 package pl.dataViewer.client.db;
 import pl.dataViewer.client.data.StationData;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
 import java.util.List;
+import java.util.Properties;
 
- // POZNIEJ DODAC ODCZYTYWANIE URL ITP Z PLIKU .PROPERTIES
+// POZNIEJ DODAC ODCZYTYWANIE URL ITP Z PLIKU .PROPERTIES
 //import java.util.Properties;
 
 public class SaveStationData {
+
+    private Properties loadProperties(){
+        Properties properties = new Properties();
+        try(FileInputStream input = new FileInputStream("client/src/main/resources/application.properties")){
+            properties.load(input);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return properties;
+    }
     public void saveStationData(List<StationData> data){
-        try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dataViewer","root","haslohaslo")){
+        Properties properties = loadProperties();
+        try(Connection connection = DriverManager.getConnection(properties.getProperty("db_url"),properties.getProperty("db_user"),properties.getProperty("db_password"))){
             String sqlInsert = "INSERT INTO synop_data (id_stacji, nazwa_stacji, data_pomiaru, godzina_pomiaru, temperatura, predkosc_wiatru, kierunek_wiatru, wilgotnosc_wzgledna, suma_opadu, cisnienie) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             String sqlCheckIfInDataBase = "SELECT id_stacji from synop_data where id_stacji = ? AND data_pomiaru = ?";
             for(StationData item : data) {

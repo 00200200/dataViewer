@@ -2,19 +2,33 @@ package pl.dataViewer.client.db;
 
 import pl.dataViewer.client.data.StationData;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Properties;
 
 
 public class StationRepository {
 
+    private Properties loadProperties(){
+        Properties properties = new Properties();
+        try(FileInputStream input = new FileInputStream("client/src/main/resources/application.properties")){
+            properties.load(input);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return properties;
+    }
+
     public List<String> getAllStationNames() {
         List<String> stationNames = new ArrayList<>();
+        Properties properties = loadProperties();
         String query = "SELECT DISTINCT nazwa_stacji FROM synop_data";
 
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dataViewer", "root", "haslohaslo")) {
+        try (Connection connection = DriverManager.getConnection(properties.getProperty("db_url"),properties.getProperty("db_user"),properties.getProperty("db_password"))) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -105,7 +119,8 @@ public class StationRepository {
         }
         query += " FROM synop_data WHERE nazwa_stacji = ?";
 
-        try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dataViewer","root","haslohaslo")){
+        Properties properties = loadProperties();
+        try(Connection connection = DriverManager.getConnection(properties.getProperty("db_url"),properties.getProperty("db_user"),properties.getProperty("db_password"))){
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,stationName);
             ResultSet resultSet = statement.executeQuery();
