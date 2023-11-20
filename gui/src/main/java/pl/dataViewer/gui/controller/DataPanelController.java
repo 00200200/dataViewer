@@ -29,7 +29,7 @@ public class DataPanelController {
         this.data = data;
     }
 
-    public void displayData(List<StationData> data,boolean stationId, boolean station, boolean date, boolean hour, boolean temperature, boolean windSpeed, boolean windDirection,
+    public void displayData(List<StationData> data, boolean stationId, boolean station, boolean date, boolean hour, boolean temperature, boolean windSpeed, boolean windDirection,
                             boolean humidity, boolean rainFall, boolean pressure) {
         if (!data.isEmpty()) {
             dataPanelTable.getColumns().clear();
@@ -122,7 +122,6 @@ public class DataPanelController {
         }
     }
 
-
     public void updateGraph() {
         List<StationData> data = getData();
         String selectedItem = DataPanelListView.getSelectionModel().getSelectedItem();
@@ -182,7 +181,7 @@ public class DataPanelController {
                     }
                     temperatureGraph.getData().add(series);
                     break;
-                    case "wilgotnosc":
+                case "wilgotnosc":
                     series.setName("Wilgotnosc Wykres");
                     for (StationData item : data) {
                         if (item.getDate() != null && item.getHumidity() != null) {
@@ -192,7 +191,7 @@ public class DataPanelController {
                     }
                     temperatureGraph.getData().add(series);
                     break;
-                    case "kierunek wiatru":
+                case "kierunek wiatru":
                     series.setName("kierunek Wiatru Wykres");
                     for (StationData item : data) {
                         if (item.getDate() != null && item.getWindDirection() != null) {
@@ -203,7 +202,7 @@ public class DataPanelController {
                     temperatureGraph.getData().add(series);
                     break;
                 default:
-                    System.out.println("XD");
+
             }
         }
 

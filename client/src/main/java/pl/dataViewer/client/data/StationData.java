@@ -1,4 +1,5 @@
 package pl.dataViewer.client.data;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.time.LocalDate;
@@ -119,7 +120,10 @@ public class StationData {
         this.pressure = pressure;
     }
 
-    public StationData(){};
+    public StationData() {
+    }
+
+    ;
 
 
 }

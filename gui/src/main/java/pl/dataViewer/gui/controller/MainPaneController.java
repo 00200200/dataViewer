@@ -11,11 +11,9 @@ import javafx.stage.Stage;
 import pl.dataViewer.client.data.StationData;
 import pl.dataViewer.client.db.StationRepository;
 
-import java.net.Proxy;
 import java.util.List;
 
 public class MainPaneController {
-
 
     @FXML
     private CheckBox date;
@@ -56,25 +54,25 @@ public class MainPaneController {
     }
 
 
-    public void onClick(){
+    public void onClick() {
         StationRepository stationRepository = new StationRepository();
         String selectedItem = mainPaneTable.getSelectionModel().getSelectedItem();
-        if(selectedItem != null){
-            List<StationData> data =  stationRepository.getAllCheckedStations(mainPaneTable.getSelectionModel().getSelectedItem(),stationId.isSelected(),station.isSelected(),date.isSelected(),hour.isSelected(),temperature.isSelected(),windSpeed.isSelected(),windDirection.isSelected(),humidity.isSelected(),rainFall.isSelected(),pressure.isSelected());
-            openDataPanel(data,selectedItem,stationId.isSelected(),station.isSelected(),date.isSelected(),hour.isSelected(),temperature.isSelected(),windSpeed.isSelected(),windDirection.isSelected(),humidity.isSelected(),rainFall.isSelected(),pressure.isSelected());
+        if (selectedItem != null) {
+            List<StationData> data = stationRepository.getAllCheckedStations(mainPaneTable.getSelectionModel().getSelectedItem(), stationId.isSelected(), station.isSelected(), date.isSelected(), hour.isSelected(), temperature.isSelected(), windSpeed.isSelected(), windDirection.isSelected(), humidity.isSelected(), rainFall.isSelected(), pressure.isSelected());
+            openDataPanel(data, selectedItem, stationId.isSelected(), station.isSelected(), date.isSelected(), hour.isSelected(), temperature.isSelected(), windSpeed.isSelected(), windDirection.isSelected(), humidity.isSelected(), rainFall.isSelected(), pressure.isSelected());
 
         }
     }
 
     @FXML
-    private void openDataPanel(List<StationData> data,String stationName,boolean stationId, boolean station, boolean date, boolean hour, boolean temperature, boolean windSpeed, boolean windDirection,
-                               boolean humidity, boolean rainFall, boolean pressure){
-        try{
+    private void openDataPanel(List<StationData> data, String stationName, boolean stationId, boolean station, boolean date, boolean hour, boolean temperature, boolean windSpeed, boolean windDirection,
+                               boolean humidity, boolean rainFall, boolean pressure) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dataPanel.fxml"));
             Scene scene = new Scene(loader.load());
             DataPanelController controller = loader.getController();
-            controller.displayData(data, stationId,  station,  date,  hour,  temperature,  windSpeed,  windDirection,
-             humidity,  rainFall,  pressure);
+            controller.displayData(data, stationId, station, date, hour, temperature, windSpeed, windDirection,
+                    humidity, rainFall, pressure);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle(stationName);
