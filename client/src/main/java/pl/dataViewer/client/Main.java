@@ -16,7 +16,7 @@ public class Main {
         DataParser parser = new DataParser();
         CompletableFuture<String> data = apiClient.getDataFromApi();
         data.thenAccept(jsonData -> {
-            String[] newData =  jsonData.split("},");
+            String[] newData = jsonData.split("},");
             List<StationData> stationDataList = parser.parse(jsonData);
         }).exceptionally(ex -> {
             System.out.println("BŁĄD" + ex.getMessage());

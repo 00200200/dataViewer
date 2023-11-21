@@ -13,9 +13,9 @@ import java.util.Properties;
 
 public class StationRepository {
 
-    private Properties loadProperties(){
+    private Properties loadProperties() {
         Properties properties = new Properties();
-        try(FileInputStream input = new FileInputStream("client/src/main/resources/application.properties")){
+        try (FileInputStream input = new FileInputStream("client/src/main/resources/application.properties")) {
             properties.load(input);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -28,7 +28,7 @@ public class StationRepository {
         Properties properties = loadProperties();
         String query = "SELECT DISTINCT nazwa_stacji FROM synop_data";
 
-        try (Connection connection = DriverManager.getConnection(properties.getProperty("db_url"),properties.getProperty("db_user"),properties.getProperty("db_password"))) {
+        try (Connection connection = DriverManager.getConnection(properties.getProperty("db_url"), properties.getProperty("db_user"), properties.getProperty("db_password"))) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -42,7 +42,7 @@ public class StationRepository {
 
     }
 
-    public List<StationData> getAllCheckedStations(String stationName,boolean stationId, boolean station, boolean date, boolean hour, boolean temperature, boolean windSpeed, boolean windDirection,
+    public List<StationData> getAllCheckedStations(String stationName, boolean stationId, boolean station, boolean date, boolean hour, boolean temperature, boolean windSpeed, boolean windDirection,
                                                    boolean humidity, boolean rainFall, boolean pressure) {
         List<StationData> checkedData = new ArrayList<>();
         String query = "SELECT ";
@@ -60,7 +60,7 @@ public class StationRepository {
         }
         if (date) {
             if (!firstColumn) {
-               query += ", ";
+                query += ", ";
             }
             query += "data_pomiaru";
             firstColumn = false;
@@ -114,75 +114,75 @@ public class StationRepository {
             query += "cisnienie";
             firstColumn = false;
         }
-        if(query == "SELECT "){
+        if (query == "SELECT ") {
             return null;
         }
         query += " FROM synop_data WHERE nazwa_stacji = ?";
 
         Properties properties = loadProperties();
-        try(Connection connection = DriverManager.getConnection(properties.getProperty("db_url"),properties.getProperty("db_user"),properties.getProperty("db_password"))){
+        try (Connection connection = DriverManager.getConnection(properties.getProperty("db_url"), properties.getProperty("db_user"), properties.getProperty("db_password"))) {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,stationName);
+            statement.setString(1, stationName);
             ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 StationData data = new StationData();
-                if(stationId){
+                if (stationId) {
                     data.setStationId(resultSet.getInt("id_stacji"));
-                    if(resultSet.wasNull()){
+                    if (resultSet.wasNull()) {
                         data.setStationId(null);
                     }
                 }
-                if(station){
+                if (station) {
                     data.setStation(resultSet.getString("nazwa_stacji"));
-                    if(resultSet.wasNull()){
+                    if (resultSet.wasNull()) {
                         data.setStation(null);
                     }
                 }
-                if(date){
+                if (date) {
                     data.setDate(resultSet.getDate("data_pomiaru").toLocalDate());
-                    if(resultSet.wasNull()){
+                    if (resultSet.wasNull()) {
                         data.setDate(null);
                     }
                 }
-                if(hour){
+                if (hour) {
                     data.setHour(resultSet.getInt("godzina_pomiaru"));
-                    if(resultSet.wasNull()){
+                    if (resultSet.wasNull()) {
                         data.setHour(null);
                     }
                 }
-                if(temperature){
+                if (temperature) {
                     data.setTemperature(resultSet.getDouble("temperatura"));
-                    if(resultSet.wasNull()){
+                    if (resultSet.wasNull()) {
                         data.setTemperature(null);
                     }
                 }
-                if(windSpeed){
+                if (windSpeed) {
                     data.setWindSpeed(resultSet.getDouble("predkosc_wiatru"));
-                    if(resultSet.wasNull()){
+                    if (resultSet.wasNull()) {
                         data.setWindSpeed(null);
                     }
                 }
-                if(windDirection){
+                if (windDirection) {
                     data.setWindDirection(resultSet.getDouble("kierunek_wiatru"));
-                    if(resultSet.wasNull()){
+                    if (resultSet.wasNull()) {
                         data.setWindDirection(null);
                     }
                 }
-                if(humidity){
+                if (humidity) {
                     data.setHumidity(resultSet.getDouble("wilgotnosc_wzgledna"));
-                    if(resultSet.wasNull()){
+                    if (resultSet.wasNull()) {
                         data.setHumidity(null);
                     }
                 }
-                if(rainFall){
+                if (rainFall) {
                     data.setRainFall(resultSet.getDouble("suma_opadu"));
-                    if(resultSet.wasNull()){
+                    if (resultSet.wasNull()) {
                         data.setRainFall(null);
                     }
                 }
-                if(pressure) {
+                if (pressure) {
                     data.setPressure(resultSet.getDouble("cisnienie"));
-                    if(resultSet.wasNull()){
+                    if (resultSet.wasNull()) {
                         data.setPressure(null);
                     }
                 }

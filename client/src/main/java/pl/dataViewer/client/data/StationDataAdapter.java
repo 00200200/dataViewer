@@ -31,95 +31,87 @@ public class StationDataAdapter extends TypeAdapter<StationData> {
     public StationData read(JsonReader jsonReader) throws IOException {
         StationData data = new StationData();
         jsonReader.beginObject();
-        while (jsonReader.hasNext()){
+        while (jsonReader.hasNext()) {
             String name = jsonReader.nextName();
-            switch (name){
+            switch (name) {
                 case "id_stacji":
-                    if(jsonReader.peek() != JsonToken.NULL) {
+                    if (jsonReader.peek() != JsonToken.NULL) {
                         data.setStationId(Integer.parseInt(jsonReader.nextString()));
-                    }
-                    else{
+                    } else {
                         jsonReader.nextNull();
                         data.setStationId(null);
                     }
                     break;
                 case "stacja":
-                    if(jsonReader.peek() != JsonToken.NULL) {
+                    if (jsonReader.peek() != JsonToken.NULL) {
                         data.setStation(jsonReader.nextString());
-                    }
-                    else{
+                    } else {
                         jsonReader.nextNull();
                         data.setStation(null);
                     }
                     break;
                 case "data_pomiaru":
-                    if(jsonReader.peek() != JsonToken.NULL) {
+                    if (jsonReader.peek() != JsonToken.NULL) {
                         data.setDate(LocalDate.parse(jsonReader.nextString()));
-                    }
-                    else{
+                    } else {
                         jsonReader.nextNull();
                         data.setDate(null);
                     }
                     break;
                 case "godzina_pomiaru":
-                    if(jsonReader.peek() != JsonToken.NULL) {
+                    if (jsonReader.peek() != JsonToken.NULL) {
                         data.setHour(Integer.parseInt(jsonReader.nextString()));
-                    }
-                    else{
+                    } else {
                         jsonReader.nextNull();
                         data.setHour(null);
                     }
                     break;
                 case "temperatura":
-                    if(jsonReader.peek() != JsonToken.NULL) {
+                    if (jsonReader.peek() != JsonToken.NULL) {
                         data.setTemperature(Double.parseDouble(jsonReader.nextString()));
-                    }
-                    else{
+                    } else {
                         jsonReader.nextNull();
                         data.setTemperature(null);
                     }
                     break;
                 case "predkosc_wiatru":
-                    if(jsonReader.peek() != JsonToken.NULL) {
+                    if (jsonReader.peek() != JsonToken.NULL) {
                         data.setWindSpeed(Double.parseDouble(jsonReader.nextString()));
-                    }
-                    else{
+                    } else {
                         jsonReader.nextNull();
                         data.setWindSpeed(null);
                     }
                     break;
                 case "kierunek_wiatru":
-                    if(jsonReader.peek() != JsonToken.NULL) {
+                    if (jsonReader.peek() != JsonToken.NULL) {
                         data.setWindDirection(Double.parseDouble(jsonReader.nextString()));
-                    }
-                    else{
+                    } else {
                         jsonReader.nextNull();
                         data.setWindDirection(null);
                     }
                     break;
                 case "wilgotnosc_wzgledna":
-                    if(jsonReader.peek() != JsonToken.NULL) {
+                    if (jsonReader.peek() != JsonToken.NULL) {
                         data.setHumidity(Double.parseDouble(jsonReader.nextString()));
-                    }
-                 else{
+                    } else {
                         jsonReader.nextNull();
                         data.setHumidity(null);
                     }
                     break;
                 case "suma_opadu":
-                    if(jsonReader.peek() != JsonToken.NULL){
+                    if (jsonReader.peek() != JsonToken.NULL) {
                         data.setRainFall(Double.parseDouble(jsonReader.nextString()));
 
-                    }else{
+                    } else {
                         jsonReader.nextNull();
                         data.setRainFall(null);
                     }
                     break;
                 case "cisnienie":
-                    if(jsonReader.peek() != JsonToken.NULL){
+                    if (jsonReader.peek() != JsonToken.NULL) {
                         data.setPressure(Double.parseDouble(jsonReader.nextString()));
 
-                    }else{
+                    } else {
                         jsonReader.nextNull();
                         data.setPressure(null);
                     }
