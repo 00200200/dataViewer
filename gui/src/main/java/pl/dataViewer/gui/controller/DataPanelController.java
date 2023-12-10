@@ -32,8 +32,14 @@ public class DataPanelController {
     public void displayData(List<StationData> data, boolean stationId, boolean station, boolean date, boolean hour, boolean temperature, boolean windSpeed, boolean windDirection,
                             boolean humidity, boolean rainFall, boolean pressure) {
         if (!data.isEmpty()) {
+
+            System.out.println(temperature);
+            System.out.println(windSpeed);
+            System.out.println(windDirection);
+            System.out.println(humidity);
+            System.out.println(rainFall);
+            System.out.println(pressure);
             dataPanelTable.getColumns().clear();
-            StationData firstItem = data.get(0);
             TableColumn<StationData, String> stationTableColumnId = new TableColumn<>("id_stacji");
             TableColumn<StationData, String> stationTableColumnName = new TableColumn<>("nazwa_stacji");
             TableColumn<StationData, String> stationTableColumnDate = new TableColumn<>("data_pomiaru");
@@ -46,75 +52,58 @@ public class DataPanelController {
             TableColumn<StationData, String> stationTableColumnpressure = new TableColumn<>("cisnienie");
             if (stationId) {
                 dataPanelTable.getColumns().add(stationTableColumnId);
+                stationTableColumnId.setCellValueFactory(new PropertyValueFactory<>("stationId"));
             }
             if (station) {
                 dataPanelTable.getColumns().add(stationTableColumnName);
+                stationTableColumnName.setCellValueFactory(new PropertyValueFactory<>("station"));
             }
             if (date) {
                 dataPanelTable.getColumns().add(stationTableColumnDate);
+                stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
             }
             if (hour) {
                 DataPanelListView.getItems().add("godzina");
                 dataPanelTable.getColumns().add(stationTableColumnHour);
+                stationTableColumnHour.setCellValueFactory(new PropertyValueFactory<>("hour"));
+
             }
             if (temperature) {
                 dataPanelTable.getColumns().add(stationTableColumnTemperature);
                 DataPanelListView.getItems().add("temperatura");
+                stationTableColumnTemperature.setCellValueFactory(new PropertyValueFactory<>("temperature"));
+
 
             }
             if (windSpeed) {
                 dataPanelTable.getColumns().add(stationTableColumnWindSpeed);
                 DataPanelListView.getItems().add("predkosc wiatru");
-
+                stationTableColumnWindSpeed.setCellValueFactory(new PropertyValueFactory<>("windSpeed"));
             }
             if (windDirection) {
-                dataPanelTable.getColumns().add(stationTableColumnHumidity);
-                DataPanelListView.getItems().add("wilgotnosc");
+                dataPanelTable.getColumns().add(stationTableColumnWindDirection);
+                DataPanelListView.getItems().add("kierunek wiatru");
+                stationTableColumnWindDirection.setCellValueFactory(new PropertyValueFactory<>("windDirection"));
+
 
             }
             if (humidity) {
-                dataPanelTable.getColumns().add(stationTableColumnRainFall);
-                DataPanelListView.getItems().add("opady deszczu");
+                dataPanelTable.getColumns().add(stationTableColumnHumidity);
+                DataPanelListView.getItems().add("wilgotnosc");
+                stationTableColumnHumidity.setCellValueFactory(new PropertyValueFactory<>("humidity"));
+
             }
             if (rainFall) {
-                dataPanelTable.getColumns().add(stationTableColumnpressure);
-                DataPanelListView.getItems().add("cisnienie");
+                dataPanelTable.getColumns().add(stationTableColumnRainFall);
+                DataPanelListView.getItems().add("opady deszczu");
+                stationTableColumnRainFall.setCellValueFactory(new PropertyValueFactory<>("rainFall"));
+
             }
             if (pressure) {
-                dataPanelTable.getColumns().add(stationTableColumnWindDirection);
-                DataPanelListView.getItems().add("kierunek wiatru");
-            }
-            for (StationData item : data) {
-                if (stationId) {
-                    stationTableColumnId.setCellValueFactory(new PropertyValueFactory<>("stationId"));
-                }
-                if (station) {
-                    stationTableColumnName.setCellValueFactory(new PropertyValueFactory<>("station"));
-                }
-                if (date) {
-                    stationTableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-                }
-                if (hour) {
-                    stationTableColumnHour.setCellValueFactory(new PropertyValueFactory<>("hour"));
-                }
-                if (temperature) {
-                    stationTableColumnTemperature.setCellValueFactory(new PropertyValueFactory<>("temperature"));
-                }
-                if (windSpeed) {
-                    stationTableColumnWindSpeed.setCellValueFactory(new PropertyValueFactory<>("windSpeed"));
-                }
-                if (windDirection) {
-                    stationTableColumnWindDirection.setCellValueFactory(new PropertyValueFactory<>("windDirection"));
-                }
-                if (humidity) {
-                    stationTableColumnHumidity.setCellValueFactory(new PropertyValueFactory<>("humidity"));
-                }
-                if (rainFall) {
-                    stationTableColumnRainFall.setCellValueFactory(new PropertyValueFactory<>("rainFall"));
-                }
-                if (pressure) {
-                    stationTableColumnpressure.setCellValueFactory(new PropertyValueFactory<>("pressure"));
-                }
+                dataPanelTable.getColumns().add(stationTableColumnpressure);
+                DataPanelListView.getItems().add("cisnienie");
+                stationTableColumnpressure.setCellValueFactory(new PropertyValueFactory<>("pressure"));
+
             }
 
             dataPanelTable.getItems().setAll(data);

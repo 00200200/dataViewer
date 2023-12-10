@@ -26,7 +26,7 @@ public class SaveStationData {
             String sqlInsert = "INSERT INTO synop_data (id_stacji, nazwa_stacji, data_pomiaru, godzina_pomiaru, temperatura, predkosc_wiatru, kierunek_wiatru, wilgotnosc_wzgledna, suma_opadu, cisnienie) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             String sqlCheckIfInDataBase = "SELECT id_stacji from synop_data where id_stacji = ? AND data_pomiaru = ?";
             for (StationData item : data) {
-                boolean exists = false;
+//                boolean exists = false;
                 try (PreparedStatement check = connection.prepareStatement(sqlCheckIfInDataBase)) {
                     check.setInt(1, item.getStationId());
                     check.setDate(2, java.sql.Date.valueOf(item.getDate()));

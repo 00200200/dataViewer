@@ -8,27 +8,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane fx:controller="pl.dataViewer.gui.controller.MainPaneController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.dataViewer.gui.controller.MainPaneController">
    <children>
       <TableView fx:id="mainPaneTable" layoutX="25.0" layoutY="33.0" prefHeight="200.0" prefWidth="134.0">
         <columns>
           <TableColumn fx:id="mainPaneColumn" prefWidth="87.0" text="STACJA" />
         </columns>
       </TableView>
-      <Button onAction="#onClick" layoutX="236.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Otwórz" />
+      <Button layoutX="236.0" layoutY="360.0" mnemonicParsing="false" onAction="#onClick" prefHeight="26.0" prefWidth="108.0" text="Otwórz" />
       <VBox layoutX="241.0" layoutY="54.0" prefHeight="179.0" prefWidth="179.0">
          <children>
             <CheckBox fx:id="stationId" mnemonicParsing="false" prefHeight="18.0" prefWidth="128.0" text="ID_STACJI" />
             <CheckBox fx:id="station" mnemonicParsing="false" prefHeight="18.0" prefWidth="180.0" text="STACJA" />
             <CheckBox fx:id="date" mnemonicParsing="false" prefHeight="18.0" prefWidth="173.0" text="DATA POMIARU" />
-            <CheckBox fx:id="hour" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="CISNIENIE" />
-            <CheckBox fx:id="temperature" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="GODZINA POMIARU" />
-            <CheckBox fx:id="windSpeed" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="TEMPERATURA" />
-            <CheckBox fx:id="windDirection" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="PREDKOSC WIATRU" />
-            <CheckBox fx:id="humidity" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="KIERUNEK WIATRU" />
-            <CheckBox fx:id="rainFall" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="WILGOTNOSC" />
-            <CheckBox fx:id="pressure" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="SUMA OPADU" />
+            <CheckBox fx:id="hour" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="GODZINA" />
+            <CheckBox fx:id="temperature" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="TEMPERATURA" />
+            <CheckBox fx:id="windSpeed" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="PREDKOSC WIATRU" />
+            <CheckBox fx:id="windDirection" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="KIERUNEK WIATRU" />
+            <CheckBox fx:id="humidity" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="WILGOTNOSC" />
+            <CheckBox fx:id="rainFall" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="SUMA OPADU" />
+            <CheckBox fx:id="pressure" mnemonicParsing="false" prefHeight="18.0" prefWidth="184.0" text="CISNIENIE" />
          </children>
       </VBox>
       <Label layoutX="241.0" layoutY="33.0" text="Wybierz dane które chcesz wyświetlić" />

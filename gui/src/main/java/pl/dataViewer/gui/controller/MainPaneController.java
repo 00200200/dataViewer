@@ -89,7 +89,6 @@ public class MainPaneController {
     }
 
     public void loadData() {
-
     }
 
 }
